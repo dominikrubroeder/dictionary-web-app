@@ -1,12 +1,41 @@
+"use client"
+
 import PlayIcon from "@/app/components/PlayIcon";
+import {FormEvent, useState} from "react";
+import {Data, defaultData} from "@/data";
 
 export default function Home() {
+    const [searchValue, setSearchValue] = useState<string>('')
+    const [data, setData] = useState<Data>(defaultData)
+
+    async function handleSubmit(e: FormEvent<HTMLFormElement>, searchValue: string) {
+        e.preventDefault()
+        const modifiedSearchValue = searchValue.trim().replace(' ', '').toLowerCase()
+
+        if (modifiedSearchValue === '') {
+            setSearchValue('')
+            return
+        }
+
+        const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${modifiedSearchValue}`)
+        const data = await response.json()
+        setSearchValue(modifiedSearchValue)
+        setData(data[0])
+    }
+
     return (
         <main className="grid content-start gap-8">
+            <section>
+                <form onSubmit={(e) => handleSubmit(e, searchValue)}>
+                    <input type="text" placeholder="Search keyword..." className="text-xl font-semibold p-4 rounded-2xl bg-gray-100" value={searchValue} onChange={(e) => setSearchValue(e.target.value)}/>
+                    <button type="submit">Search</button>
+                </form>
+            </section>
+
             <section className="flex gap-4 justify-between">
                 <div className="grid gap-2">
-                    <h1 className="text-6xl font-bold">keyboard</h1>
-                    <small className="text-purple-400">phonetic</small>
+                    <h1 className="text-6xl font-bold">{data.word}</h1>
+                    <small className="text-purple-400">{data.phonetic}</small>
                 </div>
                 <button
                     className="bg-purple-100 flex items-center justify-center p-4 rounded-full w-20 h-20 text-purple-600">
