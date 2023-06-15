@@ -3,6 +3,7 @@
 import PlayIcon from "@/app/components/PlayIcon";
 import {FormEvent, useState} from "react";
 import {Data, defaultData} from "@/data";
+import SearchIcon from "@/app/components/SearchIcon";
 
 export default function Home() {
     const [searchValue, setSearchValue] = useState<string>('')
@@ -19,16 +20,18 @@ export default function Home() {
 
         const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${modifiedSearchValue}`)
         const data = await response.json()
-        setSearchValue(modifiedSearchValue)
+        setSearchValue('')
         setData(data[0])
     }
 
     return (
         <main className="grid content-start gap-8">
             <section>
-                <form onSubmit={(e) => handleSubmit(e, searchValue)}>
-                    <input type="text" placeholder="Search keyword..." className="text-xl font-semibold p-4 rounded-2xl bg-gray-100" value={searchValue} onChange={(e) => setSearchValue(e.target.value)}/>
-                    <button type="submit">Search</button>
+                <form className="relative flex" onSubmit={(e) => handleSubmit(e, searchValue)}>
+                    <input type="text" placeholder="Search keyword..." className="text-xl font-semibold p-4 rounded-2xl bg-gray-100 w-full" value={searchValue} onChange={(e) => setSearchValue(e.target.value)}/>
+                    <button type="submit" className="absolute right-4 top-1/2 -translate-y-1/2" aria-label="Search">
+                        <SearchIcon />
+                    </button>
                 </form>
             </section>
 
