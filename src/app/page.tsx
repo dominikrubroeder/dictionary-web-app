@@ -60,8 +60,8 @@ export default function Home() {
 
       <section className="flex justify-between gap-4">
         <div className="grid gap-2">
-          <h1 className="text-6xl font-bold">{data.word}</h1>
-          <small className="text-purple-400">{data.phonetic}</small>
+          <h1 className="text-6xl font-bold dark:text-white">{data.word}</h1>
+          <small className="text-2xl text-purple-400">{data.phonetic}</small>
         </div>
         <button className="flex h-20 w-20 items-center justify-center rounded-full bg-purple-100 p-4 text-purple-600">
           <PlayIcon />
@@ -71,17 +71,19 @@ export default function Home() {
       {data.meanings.map((meaning, index) => (
         <section key={index}>
           <header className="my-4 flex items-center gap-5 font-bold italic">
-            <h2 className="text-2xl">{meaning.partOfSpeech}</h2>
-            <div className="h-[1px] w-full bg-gray-100"></div>
+            <h2 className="text-2xl dark:text-white">{meaning.partOfSpeech}</h2>
+            <div className="h-[1px] w-full bg-gray-100 dark:bg-gray-900"></div>
           </header>
 
           <h2 className="mb-4">Meaning</h2>
           <ul className="mb-8 grid list-disc gap-2 pl-5">
             {meaning.definitions.map((definition, index) => (
               <li key={index} className="text-purple-400">
-                <span className="text-black">{definition.definition}</span>
+                <span className="text-black dark:text-white">
+                  {definition.definition}
+                </span>
                 {definition.example && (
-                  <p className="text-black">
+                  <p className="text-black dark:text-white">
                     &ldquo;{definition.example}&rdquo;
                   </p>
                 )}
