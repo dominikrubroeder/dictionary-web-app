@@ -1,13 +1,14 @@
 "use client";
 
 import PlayIcon from "@/app/components/PlayIcon";
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import { Data, defaultData } from "@/data";
 import SearchIcon from "@/app/components/SearchIcon";
 
 export default function Home() {
   const [searchValue, setSearchValue] = useState<string>("");
   const [data, setData] = useState<Data>(defaultData);
+  const audioRef = useRef<null | HTMLAudioElement>(null);
 
   async function handleSubmit(
     e: FormEvent<HTMLFormElement>,
@@ -30,6 +31,10 @@ export default function Home() {
     const data = await response.json();
     setSearchValue("");
     setData(data[0]);
+  }
+
+  function playPhonetic() {
+    if (audioRef.current) audioRef.current.play();
   }
 
   useEffect(() => console.log(data), [data]);
@@ -63,9 +68,25 @@ export default function Home() {
           <h1 className="text-6xl font-bold dark:text-white">{data.word}</h1>
           <small className="text-2xl text-purple-400">{data.phonetic}</small>
         </div>
-        <button className="flex h-20 w-20 items-center justify-center rounded-full bg-purple-100 p-4 text-purple-600">
-          <PlayIcon />
-        </button>
+
+        {data.phonetics.map((phonetic, index) => {
+          if (phonetic.audio !== "")
+            return (
+              <div key={index}>
+                <button
+                  className="flex h-20 w-20 items-center justify-center rounded-full bg-purple-100 p-4 text-purple-600"
+                  onClick={playPhonetic}
+                >
+                  <PlayIcon />
+                </button>
+
+                <audio ref={audioRef}>
+                  <source src={phonetic.audio} type="audio/mpeg" />
+                  Your browser does not support the audio element.
+                </audio>
+              </div>
+            );
+        })}
       </section>
 
       {data.meanings.map((meaning, index) => (

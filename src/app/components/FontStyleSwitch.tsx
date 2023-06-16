@@ -29,7 +29,7 @@ export default function FontStyleSwitch() {
   return (
     <div className="relative">
       <div
-        className="flex items-center gap-2 dark:text-white"
+        className="flex cursor-pointer items-center gap-2 dark:text-white"
         onClick={() => setIsOpen((previousState) => !previousState)}
       >
         {fontStyle}
@@ -49,23 +49,23 @@ export default function FontStyleSwitch() {
       </div>
 
       {isOpen && (
-        <div className="absolute right-0 top-8 z-50 rounded-xl bg-white p-8 drop-shadow-2xl">
+        <div className="absolute right-0 top-8 z-50 min-w-[11.5rem] rounded-xl bg-white p-6 drop-shadow-2xl">
           <ul className="grid w-max gap-2">
             <li
               onClick={() => enableFontStyle("Sans Serif")}
-              className="cursor-pointer font-sans"
+              className="cursor-pointer font-sans text-lg hover:text-purple-400"
             >
               Sans Serif
             </li>
             <li
               onClick={() => enableFontStyle("Serif")}
-              className="cursor-pointer font-serif"
+              className="cursor-pointer font-serif text-lg hover:text-purple-400"
             >
               Serif
             </li>
             <li
               onClick={() => enableFontStyle("Mono")}
-              className="cursor-pointer font-mono"
+              className="cursor-pointer font-mono text-lg hover:text-purple-400"
             >
               Mono
             </li>
