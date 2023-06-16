@@ -25,7 +25,7 @@ export default function RootLayout({
         <header className="flex items-center justify-between gap-4 py-4">
           <Logo />
 
-          <div className="flex gap-4">
+          <div className="flex items-center gap-4">
             <FontStyleSwitch />
             <span className="h-8 w-[1px] bg-gray-100"></span>
             <DarkModeSwitch />
