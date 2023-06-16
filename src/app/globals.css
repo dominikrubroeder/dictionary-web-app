@@ -3,13 +3,11 @@
 @tailwind utilities;
 
 @layer base {
-    .interactive {
-        @apply transition-all active:scale-95 hover:scale-105
-    }
+  .interactive {
+    @apply transition-all hover:scale-105 active:scale-95;
+  }
 
-    button {
-        @apply interactive
-    }
+  button {
+    @apply interactive;
+  }
 }
-
-
