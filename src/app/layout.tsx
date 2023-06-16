@@ -20,14 +20,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`mx-auto grid min-h-screen max-w-screen-md grid-rows-[max-content_max-content_1fr] gap-8 ${inter.className} dark:bg-black`}
+        className={`mx-auto grid min-h-screen max-w-screen-md grid-rows-[max-content_max-content_1fr] gap-8 ${inter.className} w-full dark:bg-black`}
       >
         <header className="flex items-center justify-between gap-4 py-4">
           <Logo />
 
           <div className="flex items-center gap-4">
             <FontStyleSwitch />
-            <span className="h-8 w-[1px] bg-gray-100"></span>
+            <span className="h-8 w-[1px] bg-gray-100 dark:bg-gray-900"></span>
             <DarkModeSwitch />
           </div>
         </header>

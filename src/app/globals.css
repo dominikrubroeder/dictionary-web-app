@@ -14,4 +14,16 @@
     * {
         @apply transition-all duration-300
     }
+
+    .font-sans-serif-theme * {
+        @apply font-sans
+    }
+
+    .font-serif-theme * {
+        @apply font-serif
+    }
+
+    .font-mono-theme * {
+        @apply font-mono
+    }
 }
