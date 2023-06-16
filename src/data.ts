@@ -4,18 +4,21 @@ export interface Data {
   phonetics: Phonetic[];
   origin: string;
   meanings: Meaning[];
+  sourceUrls: string[];
 }
 
 export interface Meaning {
   partOfSpeech: string;
   definitions: Definition[];
+  synonyms: string[];
+  antonyms: string[];
 }
 
 export interface Definition {
   definition: string;
   example: string;
-  synonyms: any[];
-  antonyms: any[];
+  synonyms: string[];
+  antonyms: string[];
 }
 
 export interface Phonetic {
@@ -25,56 +28,56 @@ export interface Phonetic {
 
 export const defaultData = JSON.parse(
   JSON.stringify({
-    word: 'keyboard',
-    phonetic: '/ˈkiːbɔːd/',
+    word: "keyboard",
+    phonetic: "/ˈkiːbɔːd/",
     phonetics: [
-      { text: '/ˈkiːbɔːd/', audio: '' },
-      { text: '/ˈkiːbɔːd/', audio: '' },
+      { text: "/ˈkiːbɔːd/", audio: "" },
+      { text: "/ˈkiːbɔːd/", audio: "" },
       {
-        text: '/ˈkibɔɹd/',
+        text: "/ˈkibɔɹd/",
         audio:
-          'https://api.dictionaryapi.dev/media/pronunciations/en/keyboard-us.mp3',
-        sourceUrl: 'https://commons.wikimedia.org/w/index.php?curid=1755168',
+          "https://api.dictionaryapi.dev/media/pronunciations/en/keyboard-us.mp3",
+        sourceUrl: "https://commons.wikimedia.org/w/index.php?curid=1755168",
         license: {
-          name: 'BY-SA 3.0',
-          url: 'https://creativecommons.org/licenses/by-sa/3.0',
+          name: "BY-SA 3.0",
+          url: "https://creativecommons.org/licenses/by-sa/3.0",
         },
       },
     ],
     meanings: [
       {
-        partOfSpeech: 'noun',
+        partOfSpeech: "noun",
         definitions: [
           {
             definition:
-              '(etc.) A set of keys used to operate a typewriter, computer etc.',
+              "(etc.) A set of keys used to operate a typewriter, computer etc.",
             synonyms: [],
             antonyms: [],
           },
           {
             definition:
-              'A component of many instruments including the piano, organ, and harpsichord consisting of usually black and white keys that cause different tones to be produced when struck.',
+              "A component of many instruments including the piano, organ, and harpsichord consisting of usually black and white keys that cause different tones to be produced when struck.",
             synonyms: [],
             antonyms: [],
           },
           {
             definition:
-              'A device with keys of a musical keyboard, used to control electronic sound-producing devices which may be built into or separate from the keyboard device.',
+              "A device with keys of a musical keyboard, used to control electronic sound-producing devices which may be built into or separate from the keyboard device.",
             synonyms: [],
             antonyms: [],
           },
         ],
-        synonyms: ['electronic keyboard'],
+        synonyms: ["electronic keyboard"],
         antonyms: [],
       },
       {
-        partOfSpeech: 'verb',
+        partOfSpeech: "verb",
         definitions: [
           {
-            definition: 'To type on a computer keyboard.',
+            definition: "To type on a computer keyboard.",
             synonyms: [],
             antonyms: [],
-            example: 'Keyboarding is the part of this job I hate the most.',
+            example: "Keyboarding is the part of this job I hate the most.",
           },
         ],
         synonyms: [],
@@ -82,9 +85,9 @@ export const defaultData = JSON.parse(
       },
     ],
     license: {
-      name: 'CC BY-SA 3.0',
-      url: 'https://creativecommons.org/licenses/by-sa/3.0',
+      name: "CC BY-SA 3.0",
+      url: "https://creativecommons.org/licenses/by-sa/3.0",
     },
-    sourceUrls: ['https://en.wiktionary.org/wiki/keyboard'],
+    sourceUrls: ["https://en.wiktionary.org/wiki/keyboard"],
   })
 );
