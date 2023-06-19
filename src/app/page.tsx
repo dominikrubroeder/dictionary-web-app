@@ -54,7 +54,7 @@ export default function Home() {
           <input
             type="text"
             placeholder="Search keyword..."
-            className="w-full rounded-2xl bg-gray-100 p-4 text-xl font-semibold"
+            className="w-full rounded-2xl bg-gray-100 p-4 text-xl font-semibold focus:border-app-peach"
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
           />
@@ -72,8 +72,8 @@ export default function Home() {
         <div className="grid gap-6 text-center">
           <p className="text-6xl">😕</p>
           <div className="grid gap-4">
-            <h1 className="font-bold">No Definitions found.</h1>
-            <p>
+            <h1 className="font-bold dark:text-white">No Definitions found.</h1>
+            <p className="text-app-gray-500">
               Sorry pal, we couldn&apos;t find definitions for the word you were
               looking for. You can try the search again at later time or head to
               the web instead.
@@ -121,7 +121,7 @@ export default function Home() {
                 <div className="h-[1px] w-full bg-gray-100 dark:bg-gray-900"></div>
               </header>
 
-              <h2 className="mb-4 dark:text-white">Meaning</h2>
+              <h2 className="mb-4 text-app-gray-500">Meaning</h2>
               <ul className="mb-8 grid list-disc gap-2 pl-5">
                 {meaning.definitions.map((definition, index) => (
                   <li key={index} className="text-purple-400">
@@ -129,7 +129,7 @@ export default function Home() {
                       {definition.definition}
                     </span>
                     {definition.example && (
-                      <p className="text-black dark:text-white">
+                      <p className="text-app-gray-500">
                         &ldquo;{definition.example}&rdquo;
                       </p>
                     )}
@@ -139,7 +139,7 @@ export default function Home() {
 
               {meaning.synonyms.length >= 1 && (
                 <div className="flex gap-4">
-                  <h3 className="dark:text-white">Synonyms</h3>
+                  <h3 className="text-app-gray-500">Synonyms</h3>
                   <div className="flex items-center gap-2 font-bold text-purple-400">
                     {meaning.synonyms.map((synonym, index) => (
                       <>
@@ -162,7 +162,7 @@ export default function Home() {
           <hr className="dark:border-gray-900" />
 
           <section className="flex gap-4">
-            <h4 className="dark:text-white">Source</h4>
+            <h4 className="text-app-gray-500">Source</h4>
             <ul>
               {data?.sourceUrls.map((url, index) => (
                 <li key={index}>
