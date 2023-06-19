@@ -6,7 +6,13 @@ import { Data, defaultData } from "@/data";
 import SearchIcon from "@/app/components/SearchIcon";
 
 export default function Home() {
-  const [searchValue, setSearchValue] = useState<string>("");
+  const [searchValue, setSearchValue] = useState<{
+    hasError: boolean;
+    value: string;
+  }>({
+    hasError: false,
+    value: "",
+  });
   const [data, setData] = useState<Data | null>(defaultData);
   const audioRef = useRef<null | HTMLAudioElement>(null);
 
@@ -21,7 +27,7 @@ export default function Home() {
       .toLowerCase();
 
     if (modifiedSearchValue === "") {
-      setSearchValue("");
+      setSearchValue({ hasError: true, value: "" });
       return;
     }
 
@@ -34,7 +40,7 @@ export default function Home() {
     }
 
     const data = await response.json();
-    setSearchValue("");
+    setSearchValue({ hasError: false, value: "" });
     setData(data[0]);
   }
 
@@ -49,14 +55,18 @@ export default function Home() {
       <section>
         <form
           className="relative flex"
-          onSubmit={(e) => getApiData(e, searchValue)}
+          onSubmit={(e) => getApiData(e, searchValue.value)}
         >
           <input
             type="text"
             placeholder="Search keyword..."
-            className="w-full rounded-2xl bg-gray-100 p-4 text-xl font-semibold focus:border-app-peach"
-            value={searchValue}
-            onChange={(e) => setSearchValue(e.target.value)}
+            className={`w-full rounded-2xl border-[1px] bg-gray-100 p-4 text-xl font-semibold outline-0 focus:outline-none ${
+              searchValue.hasError ? "border-app-peach" : "border-transparent"
+            }`}
+            value={searchValue.value}
+            onChange={(e) =>
+              setSearchValue({ hasError: false, value: e.target.value })
+            }
           />
           <button
             type="submit"
@@ -66,9 +76,14 @@ export default function Home() {
             <SearchIcon />
           </button>
         </form>
+        {searchValue.hasError && (
+          <div className="text-app-peach">Whoops, can&apos;t be empty...</div>
+        )}
       </section>
 
-      {data === null ? (
+      {searchValue.hasError ? (
+        <div></div>
+      ) : data === null ? (
         <div className="grid gap-6 text-center">
           <p className="text-6xl">😕</p>
           <div className="grid gap-4">
