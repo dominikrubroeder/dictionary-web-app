@@ -10,14 +10,14 @@ export default function Home() {
   const [data, setData] = useState<Data | null>(defaultData);
   const audioRef = useRef<null | HTMLAudioElement>(null);
 
-  async function handleSubmit(
-    e: FormEvent<HTMLFormElement>,
+  async function getApiData(
+    e: FormEvent<HTMLFormElement> | null,
     searchValue: string
   ) {
-    e.preventDefault();
+    if (e) e.preventDefault();
     const modifiedSearchValue = searchValue
       .trim()
-      .replace(" ", "")
+      .replace(" ", "-")
       .toLowerCase();
 
     if (modifiedSearchValue === "") {
@@ -49,7 +49,7 @@ export default function Home() {
       <section>
         <form
           className="relative flex"
-          onSubmit={(e) => handleSubmit(e, searchValue)}
+          onSubmit={(e) => getApiData(e, searchValue)}
         >
           <input
             type="text"
@@ -140,9 +140,18 @@ export default function Home() {
               {meaning.synonyms.length >= 1 && (
                 <div className="flex gap-4">
                   <h3 className="dark:text-white">Synonyms</h3>
-                  <div className="font-bold text-purple-400">
+                  <div className="flex items-center gap-2 font-bold text-purple-400">
                     {meaning.synonyms.map((synonym, index) => (
-                      <span key={index}>{synonym}</span>
+                      <>
+                        <span
+                          key={index}
+                          className="cursor-pointer"
+                          onClick={() => getApiData(null, synonym)}
+                        >
+                          {synonym}
+                        </span>
+                        <span className="h-full w-[1px] bg-gray-100 last-of-type:hidden dark:bg-gray-900"></span>
+                      </>
                     ))}
                   </div>
                 </div>
