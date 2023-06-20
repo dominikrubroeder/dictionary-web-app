@@ -114,7 +114,7 @@ export default function Home() {
                 return (
                   <div key={index}>
                     <button
-                      className="flex h-20 w-20 items-center justify-center rounded-full bg-purple-100 p-4 text-purple-600"
+                      className="group flex h-20 w-20 items-center justify-center rounded-full bg-purple-100 p-4 text-app-purple hover:bg-app-purple"
                       onClick={playPhonetic}
                     >
                       <PlayIcon />
@@ -135,7 +135,7 @@ export default function Home() {
                 <h2 className="text-2xl dark:text-white">
                   {meaning.partOfSpeech}
                 </h2>
-                <div className="h-[1px] w-full bg-gray-100 dark:bg-gray-900"></div>
+                <div className="h-[1px] w-full bg-app-gray-200 dark:bg-app-gray-700"></div>
               </header>
 
               <h2 className="mb-4 text-app-gray-500">Meaning</h2>
@@ -169,7 +169,7 @@ export default function Home() {
                         >
                           {synonym}
                         </span>
-                        <span className="inline-block h-6 w-[1px] bg-gray-100 group-last-of-type:hidden dark:bg-gray-900"></span>
+                        <span className="inline-block h-6 w-[1px] bg-app-gray-200 group-last-of-type:hidden dark:bg-app-gray-700 dark:bg-gray-900"></span>
                       </div>
                     ))}
                   </div>
@@ -178,14 +178,18 @@ export default function Home() {
             </section>
           ))}
 
-          <hr className="dark:border-gray-900" />
+          <hr className="border-app-gray-200 dark:border-app-gray-700" />
 
           <section className="flex gap-4">
-            <h4 className="text-app-gray-500">Source</h4>
+            <h4 className="text-sm text-app-gray-500 underline">Source</h4>
             <ul>
               {data?.sourceUrls.map((url, index) => (
                 <li key={index}>
-                  <a className="dark:text-white" href={url} target="_blank">
+                  <a
+                    className="leading-1 text-sm underline dark:text-white"
+                    href={url}
+                    target="_blank"
+                  >
                     {url}
                   </a>
                 </li>
