@@ -144,7 +144,7 @@ export default function Home() {
                       {definition.definition}
                     </span>
                     {definition.example && (
-                      <p className="text-app-gray-500">
+                      <p className="mt-2 text-app-gray-500">
                         &ldquo;{definition.example}&rdquo;
                       </p>
                     )}
@@ -159,7 +159,6 @@ export default function Home() {
                     {meaning.synonyms.map((synonym, index) => (
                       <>
                         <span
-                          key={index}
                           className="cursor-pointer"
                           onClick={() => getApiData(null, synonym)}
                         >

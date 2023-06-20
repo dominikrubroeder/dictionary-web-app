@@ -24,6 +24,8 @@ export default function FontStyleSwitch() {
     // Set font style state
     setFontStyle(fontStyle);
     setIsOpen(false);
+
+    console.log("run...");
   }
 
   return (

@@ -18,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="font-sansserif-theme">
       <body
         className={`mx-auto grid min-h-screen max-w-screen-md grid-rows-[max-content_max-content_1fr] gap-8 ${inter.className} w-full dark:bg-black`}
       >

@@ -15,7 +15,7 @@
         @apply transition-all duration-300
     }
 
-    .font-sans-serif-theme * {
+    .font-sansserif-theme * {
         @apply font-sans
     }
 
