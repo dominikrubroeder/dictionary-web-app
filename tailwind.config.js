@@ -8,6 +8,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      boxShadow: {
+        "app-shadow": "0 5px 30px 5px rgba(164, 69, 237, 1)",
+      },
       colors: {
         app: {
           purple: "#A445ED",

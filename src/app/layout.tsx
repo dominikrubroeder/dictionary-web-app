@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="font-sansserif-theme">
       <body
-        className={`mx-auto grid min-h-screen max-w-screen-md grid-rows-[max-content_max-content_1fr] gap-8 ${inter.className} w-full dark:bg-black`}
+        className={`mx-auto grid min-h-screen w-full max-w-screen-md grid-rows-[max-content_max-content_1fr] gap-8 px-6 dark:bg-black sm:px-10 lg:px-0 ${inter.className}`}
       >
         <header className="flex items-center justify-between gap-4 py-4">
           <Logo />

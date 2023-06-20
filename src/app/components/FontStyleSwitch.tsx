@@ -49,23 +49,23 @@ export default function FontStyleSwitch() {
       </div>
 
       {isOpen && (
-        <div className="absolute right-0 top-8 z-50 min-w-[11.5rem] rounded-xl bg-white p-6 drop-shadow-2xl dark:bg-black dark:shadow-lg dark:shadow-purple-400">
+        <div className="absolute right-0 top-8 z-50 min-w-[11.5rem] rounded-xl bg-white p-6 drop-shadow-2xl dark:bg-black dark:shadow-app-shadow">
           <ul className="grid w-max gap-2">
             <li
               onClick={() => enableFontStyle("Sans Serif")}
-              className="cursor-pointer font-sans text-lg hover:text-purple-400 dark:text-white"
+              className="cursor-pointer font-sans text-lg hover:text-purple-400 dark:text-white dark:hover:text-purple-400"
             >
               Sans Serif
             </li>
             <li
               onClick={() => enableFontStyle("Serif")}
-              className="cursor-pointer font-serif text-lg hover:text-purple-400 dark:text-white"
+              className="cursor-pointer font-serif text-lg hover:text-purple-400 dark:text-white dark:hover:text-purple-400"
             >
               Serif
             </li>
             <li
               onClick={() => enableFontStyle("Mono")}
-              className="cursor-pointer font-mono text-lg hover:text-purple-400 dark:text-white"
+              className="cursor-pointer font-mono text-lg hover:text-purple-400 dark:text-white dark:hover:text-purple-400"
             >
               Mono
             </li>
