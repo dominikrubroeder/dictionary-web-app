@@ -159,15 +159,18 @@ export default function Home() {
                   <h3 className="text-app-gray-500">Synonyms</h3>
                   <div className="flex items-center gap-2 font-bold text-purple-400">
                     {meaning.synonyms.map((synonym, index) => (
-                      <>
+                      <div
+                        key={index}
+                        className="group flex items-center gap-2"
+                      >
                         <span
-                          className="cursor-pointer"
+                          className="inline-block cursor-pointer"
                           onClick={() => getApiData(null, synonym)}
                         >
                           {synonym}
                         </span>
-                        <span className="h-full w-[1px] bg-gray-100 last-of-type:hidden dark:bg-gray-900"></span>
-                      </>
+                        <span className="inline-block h-6 w-[1px] bg-gray-100 group-last-of-type:hidden dark:bg-gray-900"></span>
+                      </div>
                     ))}
                   </div>
                 </div>
