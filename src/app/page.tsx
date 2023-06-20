@@ -60,8 +60,10 @@ export default function Home() {
           <input
             type="text"
             placeholder="Search keyword..."
-            className={`w-full rounded-2xl border-[1px] bg-gray-100 p-4 text-xl font-semibold outline-0 focus:outline-none ${
-              searchValue.hasError ? "border-app-peach" : "border-transparent"
+            className={`w-full rounded-2xl border-[1px] bg-gray-100 p-4 text-xl font-semibold outline-0 ${
+              searchValue.hasError
+                ? "border-app-peach"
+                : "border-transparent focus:border-app-purple"
             }`}
             value={searchValue.value}
             onChange={(e) =>
