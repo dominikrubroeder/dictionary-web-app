@@ -33,6 +33,25 @@ export default function RootLayout({
         </header>
 
         {children}
+
+        <footer className="text-app-neutral-blue-grayish my-8 text-center text-xs">
+          Frontend challenge by&nbsp;
+          <a
+            href="https://www.frontendmentor.io/challenges/dictionary-web-app-h5wwnyuKFL"
+            target="_blank"
+            rel="noreferrer"
+          >
+            frontendmentor.io
+          </a>
+          , developed by&nbsp;
+          <a
+            href="https://github.com/dominikrubroeder"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Dominik Rubröder
+          </a>
+        </footer>
       </body>
     </html>
   );
