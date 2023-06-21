@@ -50,7 +50,11 @@ export default function Home() {
     if (audioRef.current) audioRef.current.play();
   }
 
+  const phonetics = data?.phonetics.find((phonetic) => phonetic.audio !== "");
+
   useEffect(() => {
+    console.log(data);
+
     animate(
       scope.current,
       {
@@ -60,8 +64,6 @@ export default function Home() {
       { duration: 0.3 }
     );
   }, [animate, scope, data]);
-
-  useEffect(() => console.log(data), [data]);
 
   return (
     <main className="grid content-start gap-8">
@@ -128,24 +130,21 @@ export default function Home() {
               </small>
             </div>
 
-            {data?.phonetics.map((phonetic, index) => {
-              if (phonetic.audio !== "")
-                return (
-                  <div key={index}>
-                    <button
-                      className="group flex h-20 w-20 items-center justify-center rounded-full bg-purple-100 p-4 text-app-purple hover:bg-app-purple"
-                      onClick={playPhonetic}
-                    >
-                      <PlayIcon />
-                    </button>
+            {phonetics?.audio && (
+              <div>
+                <button
+                  className="group flex h-20 w-20 items-center justify-center rounded-full bg-purple-100 p-4 text-app-purple hover:bg-app-purple"
+                  onClick={playPhonetic}
+                >
+                  <PlayIcon />
+                </button>
 
-                    <audio ref={audioRef}>
-                      <source src={phonetic.audio} type="audio/mpeg" />
-                      Your browser does not support the audio element.
-                    </audio>
-                  </div>
-                );
-            })}
+                <audio ref={audioRef}>
+                  <source src={phonetics.audio} type="audio/mpeg" />
+                  Your browser does not support the audio element.
+                </audio>
+              </div>
+            )}
           </section>
 
           {data?.meanings.map((meaning, index) => (
@@ -176,7 +175,7 @@ export default function Home() {
               {meaning.synonyms.length >= 1 && (
                 <div className="flex gap-4">
                   <h3 className="text-app-gray-500">Synonyms</h3>
-                  <div className="flex items-center gap-2 font-bold text-purple-400">
+                  <div className="flex flex-wrap items-center gap-2 font-bold text-purple-400">
                     {meaning.synonyms.map((synonym, index) => (
                       <div
                         key={index}
@@ -188,7 +187,7 @@ export default function Home() {
                         >
                           {synonym}
                         </span>
-                        <span className="inline-block h-6 w-[1px] bg-app-gray-200 group-last-of-type:hidden dark:bg-app-gray-700 dark:bg-gray-900"></span>
+                        <span className="inline-block h-6 w-[1px] bg-app-gray-200 group-last-of-type:hidden dark:bg-app-gray-700"></span>
                       </div>
                     ))}
                   </div>
