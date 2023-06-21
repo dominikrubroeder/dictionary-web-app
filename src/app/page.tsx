@@ -2,15 +2,12 @@
 
 import PlayIcon from "@/app/components/PlayIcon";
 import { FormEvent, useEffect, useRef, useState } from "react";
-import { Data, defaultData } from "@/data";
+import { Data, defaultData, SearchValue } from "@/data";
 import SearchIcon from "@/app/components/SearchIcon";
 import { useAnimate } from "framer-motion";
 
 export default function Home() {
-  const [searchValue, setSearchValue] = useState<{
-    hasError: boolean;
-    value: string;
-  }>({
+  const [searchValue, setSearchValue] = useState<SearchValue>({
     hasError: false,
     value: "",
   });

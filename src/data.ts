@@ -91,3 +91,8 @@ export const defaultData = JSON.parse(
     sourceUrls: ["https://en.wiktionary.org/wiki/keyboard"],
   })
 );
+
+export interface SearchValue {
+  hasError: boolean;
+  value: string;
+}
