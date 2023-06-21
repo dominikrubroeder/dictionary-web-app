@@ -182,11 +182,11 @@ export default function Home() {
 
           <section className="flex gap-4">
             <h4 className="text-sm text-app-gray-500 underline">Source</h4>
-            <ul>
+            <ul className="grid gap-1">
               {data?.sourceUrls.map((url, index) => (
-                <li key={index}>
+                <li key={index} className="leading-[1]">
                   <a
-                    className="leading-1 text-sm underline dark:text-white"
+                    className="text-sm underline dark:text-white"
                     href={url}
                     target="_blank"
                   >
