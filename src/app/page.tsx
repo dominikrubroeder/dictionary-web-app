@@ -4,6 +4,7 @@ import PlayIcon from "@/app/components/PlayIcon";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { Data, defaultData } from "@/data";
 import SearchIcon from "@/app/components/SearchIcon";
+import { useAnimate } from "framer-motion";
 
 export default function Home() {
   const [searchValue, setSearchValue] = useState<{
@@ -15,6 +16,7 @@ export default function Home() {
   });
   const [data, setData] = useState<Data | null>(defaultData);
   const audioRef = useRef<null | HTMLAudioElement>(null);
+  const [scope, animate] = useAnimate();
 
   async function getApiData(
     e: FormEvent<HTMLFormElement> | null,
@@ -47,6 +49,17 @@ export default function Home() {
   function playPhonetic() {
     if (audioRef.current) audioRef.current.play();
   }
+
+  useEffect(() => {
+    animate(
+      scope.current,
+      {
+        opacity: [0, 1],
+        y: [16, 0],
+      },
+      { duration: 0.3 }
+    );
+  }, [animate, scope, data]);
 
   useEffect(() => console.log(data), [data]);
 
@@ -86,7 +99,10 @@ export default function Home() {
       {searchValue.hasError ? (
         <div></div>
       ) : data === null ? (
-        <div className="grid gap-6 text-center">
+        <div
+          ref={scope}
+          className="fm-animate grid gap-6 text-center opacity-0"
+        >
           <p className="text-6xl">😕</p>
           <div className="grid gap-4">
             <h1 className="font-bold dark:text-white">No Definitions found.</h1>
@@ -99,7 +115,10 @@ export default function Home() {
         </div>
       ) : (
         <>
-          <section className="flex justify-between gap-4">
+          <section
+            ref={scope}
+            className="fm-animate flex justify-between gap-4 opacity-0"
+          >
             <div className="grid gap-2">
               <h1 className="text-6xl font-bold dark:text-white">
                 {data?.word}

@@ -11,7 +11,7 @@
         @apply interactive;
     }
 
-    * {
+    *:not(.fm-animate) {
         @apply transition-all duration-300
     }
 
