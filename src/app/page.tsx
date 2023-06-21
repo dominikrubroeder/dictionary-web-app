@@ -131,10 +131,7 @@ export default function Home() {
             {data?.phonetics.map((phonetic, index) => {
               if (phonetic.audio !== "")
                 return (
-                  <div
-                    key={index}
-                    className="fixed bottom-4 right-4 sm:relative sm:bottom-0 sm:right-0"
-                  >
+                  <div key={index}>
                     <button
                       className="group flex h-20 w-20 items-center justify-center rounded-full bg-purple-100 p-4 text-app-purple hover:bg-app-purple"
                       onClick={playPhonetic}
