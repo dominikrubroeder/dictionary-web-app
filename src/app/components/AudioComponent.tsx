@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import PlayIcon from "@/app/components/PlayIcon";
 
 interface AudioComponentProps {
@@ -7,36 +7,15 @@ interface AudioComponentProps {
 
 const AudioComponent: React.FC<AudioComponentProps> = ({ src }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
     const audioElement = audioRef.current;
+    if (audioElement) audioElement.src = src;
+  }, [src]);
 
-    if (audioElement) {
-      if (isPlaying) {
-        audioElement.pause();
-        setIsPlaying(false);
-      }
-
-      audioElement.src = src;
-
-      if (isPlaying) {
-        audioElement.play();
-        setIsPlaying(true);
-      }
-    }
-  }, [src, isPlaying]);
-
-  const handlePlayPause = () => {
+  const playAudio = () => {
     const audioElement = audioRef.current;
-    if (audioElement) {
-      if (isPlaying) {
-        audioElement.pause();
-      } else {
-        audioElement.play();
-      }
-      setIsPlaying(!isPlaying);
-    }
+    if (audioElement) audioElement.play();
   };
 
   return (
@@ -47,7 +26,7 @@ const AudioComponent: React.FC<AudioComponentProps> = ({ src }) => {
       </audio>
       <button
         className="group flex h-20 w-20 items-center justify-center rounded-full bg-purple-100 p-4 text-app-purple hover:bg-app-purple"
-        onClick={handlePlayPause}
+        onClick={playAudio}
       >
         <PlayIcon />
       </button>
