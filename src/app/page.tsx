@@ -116,7 +116,7 @@ export default function Home() {
             className="fm-animate flex flex-wrap justify-between gap-4 opacity-0"
           >
             <div className="grid gap-2">
-              <h1 className="text-6xl font-bold dark:text-white">
+              <h1 className="break-all text-6xl font-bold dark:text-white">
                 {data?.word}
               </h1>
               <small className="text-2xl text-purple-400">
