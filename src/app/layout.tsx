@@ -34,7 +34,7 @@ export default function RootLayout({
 
         {children}
 
-        <footer className="text-app-neutral-blue-grayish my-8 text-center text-xs">
+        <footer className="text-app-neutral-blue-grayish my-8 text-center text-xs dark:text-white">
           Frontend challenge by&nbsp;
           <a
             href="https://www.frontendmentor.io/challenges/dictionary-web-app-h5wwnyuKFL"
