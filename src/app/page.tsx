@@ -113,7 +113,7 @@ export default function Home() {
         <>
           <section
             ref={scope}
-            className="fm-animate flex justify-between gap-4 opacity-0"
+            className="fm-animate flex flex-wrap justify-between gap-4 opacity-0"
           >
             <div className="grid gap-2">
               <h1 className="text-6xl font-bold dark:text-white">
@@ -184,7 +184,7 @@ export default function Home() {
               {data?.sourceUrls.map((url, index) => (
                 <li key={index} className="leading-[1]">
                   <a
-                    className="text-sm underline dark:text-white"
+                    className="break-all text-sm underline dark:text-white"
                     href={url}
                     target="_blank"
                   >
