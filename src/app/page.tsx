@@ -72,7 +72,9 @@ export default function Home() {
             }`}
             value={searchValue.value}
             onChange={(e) =>
-              setSearchValue({ hasError: false, value: e.target.value })
+              setSearchValue((prevState) => {
+                return { ...prevState, value: e.target.value };
+              })
             }
           />
           <button
@@ -84,7 +86,9 @@ export default function Home() {
           </button>
         </form>
         {searchValue.hasError && (
-          <div className="text-app-peach">Whoops, can&apos;t be empty...</div>
+          <div className="mt-1.5 text-app-peach">
+            Whoops, can&apos;t be empty...
+          </div>
         )}
       </section>
 
