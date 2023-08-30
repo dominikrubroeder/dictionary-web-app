@@ -25,7 +25,8 @@ const AudioComponent: React.FC<AudioComponentProps> = ({ src }) => {
         Your browser does not support the audio element.
       </audio>
       <button
-        className="group flex h-20 w-20 items-center justify-center rounded-full bg-purple-100 p-4 text-app-purple hover:bg-app-purple"
+        className="button group flex h-20 w-20 items-center justify-center rounded-full bg-purple-100 p-4 text-app-purple hover:bg-app-purple"
+        aria-label="Play Audio"
         onClick={playAudio}
       >
         <PlayIcon />

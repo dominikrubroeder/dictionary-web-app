@@ -136,7 +136,7 @@ export default function Home() {
                 <div className="h-[1px] w-full bg-app-gray-200 dark:bg-app-gray-700"></div>
               </header>
 
-              <h2 className="mb-4 text-app-gray-500">Meaning</h2>
+              <h3 className="mb-4 text-app-gray-500">Meaning</h3>
               <ul className="mb-8 grid list-disc gap-2 pl-5">
                 {meaning.definitions.map((definition, index) => (
                   <li key={index} className="text-purple-400">
@@ -154,7 +154,7 @@ export default function Home() {
 
               {meaning.synonyms.length >= 1 && (
                 <div className="flex gap-4">
-                  <h3 className="text-app-gray-500">Synonyms</h3>
+                  <h4 className="text-app-gray-500">Synonyms</h4>
                   <div className="flex flex-wrap items-center gap-2 font-bold text-purple-400">
                     {meaning.synonyms.map((synonym, index) => (
                       <div
@@ -179,7 +179,7 @@ export default function Home() {
           <hr className="border-app-gray-200 dark:border-app-gray-700" />
 
           <section className="flex gap-4">
-            <h4 className="text-sm text-app-gray-500 underline">Source</h4>
+            <h3 className="text-sm text-app-gray-500 underline">Source</h3>
             <ul className="grid gap-1">
               {data?.sourceUrls.map((url, index) => (
                 <li key={index} className="leading-[1]">

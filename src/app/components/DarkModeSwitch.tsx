@@ -10,6 +10,7 @@ export default function DarkModeSwitch() {
         }
       }}
       className="dark:text-white"
+      aria-label="Change color theme"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
