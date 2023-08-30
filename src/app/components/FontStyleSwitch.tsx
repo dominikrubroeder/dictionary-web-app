@@ -2,26 +2,26 @@
 import { useState } from "react";
 
 interface fontStyle {
-  types: "Sans Serif" | "Serif" | "Mono";
+  types: "font-sans" | "font-serif" | "font-mono";
 }
+
+const initialFontStyle: fontStyle["types"] = "font-sans";
 
 export default function FontStyleSwitch() {
   const [isOpen, setIsOpen] = useState(false);
-  const [fontStyle, setFontStyle] = useState<fontStyle["types"]>("Sans Serif");
+  const [fontStyle, setFontStyle] =
+    useState<fontStyle["types"]>(initialFontStyle);
 
   function enableFontStyle(fontStyle: fontStyle["types"]) {
     // Remove all font based class names from HTML element
-    document.documentElement.classList.forEach((className) => {
+    document.body.classList.forEach((className) => {
       if (className.startsWith("font-"))
-        document.documentElement.classList.remove(className);
+        document.body.classList.remove(className);
     });
 
     // Apply current font style to HTML element
-    document.documentElement.classList.add(
-      `font-${fontStyle.toLowerCase().replace(" ", "")}-theme`
-    );
+    document.body.classList.add(fontStyle);
 
-    // Set font style state
     setFontStyle(fontStyle);
     setIsOpen(false);
   }
@@ -52,19 +52,19 @@ export default function FontStyleSwitch() {
         <div className="absolute right-0 top-8 z-50 min-w-[11.5rem] rounded-xl bg-white p-6 drop-shadow-2xl dark:bg-black dark:shadow-app-shadow">
           <ul className="grid w-max gap-2">
             <li
-              onClick={() => enableFontStyle("Sans Serif")}
+              onClick={() => enableFontStyle("font-sans")}
               className="cursor-pointer font-sans text-lg hover:text-purple-400 dark:text-white dark:hover:text-purple-400"
             >
               Sans Serif
             </li>
             <li
-              onClick={() => enableFontStyle("Serif")}
+              onClick={() => enableFontStyle("font-serif")}
               className="cursor-pointer font-serif text-lg hover:text-purple-400 dark:text-white dark:hover:text-purple-400"
             >
               Serif
             </li>
             <li
-              onClick={() => enableFontStyle("Mono")}
+              onClick={() => enableFontStyle("font-mono")}
               className="cursor-pointer font-mono text-lg hover:text-purple-400 dark:text-white dark:hover:text-purple-400"
             >
               Mono

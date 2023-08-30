@@ -14,16 +14,4 @@
     *:not(.fm-animate) {
         @apply transition-all duration-300
     }
-
-    .font-sansserif-theme * {
-        @apply font-sans
-    }
-
-    .font-serif-theme * {
-        @apply font-serif
-    }
-
-    .font-mono-theme * {
-        @apply font-mono
-    }
 }

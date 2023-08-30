@@ -45,8 +45,6 @@ export default function Home() {
   const phonetics = data?.phonetics.find((phonetic) => phonetic.audio !== "");
 
   useEffect(() => {
-    console.log(data);
-
     animate(
       scope.current,
       {
